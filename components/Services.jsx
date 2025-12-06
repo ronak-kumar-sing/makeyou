@@ -163,21 +163,21 @@ const Services = () => {
                       className="text-[#4C8EFF] font-semibold hover:underline inline-flex items-center gap-2 group"
                       aria-label={`Learn more about ${service.title}`}
                     >
-                    Learn More
-                    <svg
-                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                </ClickSpark>
+                      Learn More
+                      <svg
+                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </ClickSpark>
                 </div>
               </article>
             ))}

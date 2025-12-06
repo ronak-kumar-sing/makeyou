@@ -31,23 +31,23 @@ const Hero = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      
+
       tl.from(headlineRef.current, {
         y: 50,
         opacity: 0,
         duration: 1,
         delay: 0.2
       })
-      .from(subtitleRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.8
-      }, '-=0.5')
-      .from(buttonsRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.8
-      }, '-=0.5');
+        .from(subtitleRef.current, {
+          y: 30,
+          opacity: 0,
+          duration: 0.8
+        }, '-=0.5')
+        .from(buttonsRef.current, {
+          y: 30,
+          opacity: 0,
+          duration: 0.8
+        }, '-=0.5');
     }, sectionRef);
 
     return () => ctx.revert();

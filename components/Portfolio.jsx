@@ -21,43 +21,43 @@ const Portfolio = () => {
         setSelectedProject(null);
       }
     });
-    
+
     tl.to(contentRef.current, {
       y: '100%',
       duration: 0.4,
       ease: 'power2.in'
     }, 0)
-    .to(backdropRef.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.inOut'
-    }, 0);
+      .to(backdropRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.inOut'
+      }, 0);
   };
 
   useEffect(() => {
     if (selectedProject && modalRef.current && backdropRef.current && contentRef.current) {
       // Prevent body scroll
       document.body.style.overflow = 'hidden';
-      
+
       // Animate in
       gsap.set(contentRef.current, { y: '100%' });
       gsap.set(backdropRef.current, { opacity: 0 });
-      
+
       const tl = gsap.timeline();
       tl.to(backdropRef.current, {
         opacity: 1,
         duration: 0.3,
         ease: 'power2.out'
       })
-      .to(contentRef.current, {
-        y: '0%',
-        duration: 0.5,
-        ease: 'power3.out'
-      }, '-=0.1');
+        .to(contentRef.current, {
+          y: '0%',
+          duration: 0.5,
+          ease: 'power3.out'
+        }, '-=0.1');
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
