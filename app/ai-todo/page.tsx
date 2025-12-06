@@ -93,22 +93,22 @@ export default function AITodo() {
       })
 
       const data = await response.json()
-
+      
       // Handle different response formats
       const suggestions = data.suggestions || []
-
+      
       // Create AI message from suggestions
       let aiContent = ''
       if (suggestions.length > 0) {
-        aiContent = suggestions.map((s: any, idx: number) =>
+        aiContent = suggestions.map((s: any, idx: number) => 
           `${idx + 1}. **${s.title || 'Suggestion'}**\n${s.description || s.suggestion || ''}`
         ).join('\n\n')
       } else {
-        aiContent = language === 'en'
+        aiContent = language === 'en' 
           ? 'I\'ve analyzed your project. Here are some suggestions to help you get started.'
           : 'मैंने आपके प्रोजेक्ट का विश्लेषण किया है। शुरू करने में मदद के लिए कुछ सुझाव हैं।'
       }
-
+      
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
@@ -133,8 +133,8 @@ export default function AITodo() {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: language === 'en'
-          ? 'Sorry, something went wrong. Please try again.'
+        content: language === 'en' 
+          ? 'Sorry, something went wrong. Please try again.' 
           : 'क्षमा करें, कुछ गलत हो गया। कृपया पुनः प्रयास करें।',
         timestamp: new Date()
       }
@@ -202,7 +202,7 @@ export default function AITodo() {
           className="w-full h-full"
         />
       </div>
-
+      
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -248,10 +248,11 @@ export default function AITodo() {
                         style={{ animationDelay: `${idx * 0.1}s` }}
                       >
                         <div
-                          className={`max-w-[80%] px-6 py-4 rounded-2xl shadow-lg ${message.type === 'user'
+                          className={`max-w-[80%] px-6 py-4 rounded-2xl shadow-lg ${
+                            message.type === 'user'
                               ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                               : 'bg-white/90 text-gray-800'
-                            }`}
+                          }`}
                         >
                           <p className="whitespace-pre-wrap">{message.content}</p>
                         </div>
@@ -308,7 +309,7 @@ export default function AITodo() {
                 <FileText size={24} />
                 {t.todoTitle}
               </h2>
-
+              
               <div className="flex-1 overflow-y-auto space-y-3">
                 {tasks.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-center">
@@ -333,8 +334,9 @@ export default function AITodo() {
                           )}
                         </button>
                         <p
-                          className={`flex-1 text-sm ${task.completed ? 'line-through text-gray-500' : 'text-gray-800'
-                            }`}
+                          className={`flex-1 text-sm ${
+                            task.completed ? 'line-through text-gray-500' : 'text-gray-800'
+                          }`}
                         >
                           {task.text}
                         </p>
