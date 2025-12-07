@@ -1,16 +1,9 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Magnet from './Magnet';
-import ClickSpark from './ClickSpark';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Section } from './Section';
+import { Button } from './Button';
 
 const Pricing = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
   const plans = [
     {
       name: 'Very Basic / Starter Site',
@@ -106,239 +99,229 @@ const Pricing = () => {
     }
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate pricing cards on scroll
-      gsap.from(cardsRef.current, {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <ClickSpark sparkColor="#4C8EFF" sparkCount={10} sparkRadius={20}>
-      <section ref={sectionRef} id="pricing" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm font-bold mb-4">
-              🔥 40% OFF Limited Time Offer
-            </div>
-            <p className="text-sm font-semibold text-[#4C8EFF] uppercase tracking-wide mb-3">
-              Pricing Plans
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
-              Flexible Pricing to Fit Every Project
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose the package that best suits your needs. All plans include quality code and modern design.
-            </p>
+    <Section id="pricing" animationType="slide-up" threshold={0.15} className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-red-100 text-red-600 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4">
+            🔥 40% OFF Limited Time Offer
           </div>
-
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto">
-            {plans.slice(0, 3).map((plan, index) => (
-              <div
-                key={index}
-                ref={(el) => (cardsRef.current[index] = el)}
-                className={`relative bg-white rounded-2xl border-2 p-6 lg:p-8 transition-all duration-300 ${plan.highlighted
-                  ? 'border-[#4C8EFF] shadow-2xl shadow-blue-500/20 md:-mt-4 md:mb-4'
-                  : 'border-gray-200 shadow-lg hover:shadow-xl hover:border-gray-300'
-                  }`}
-              >
-                {/* Badge */}
-                {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="px-4 py-1.5 bg-[#4C8EFF] text-white text-xs font-bold rounded-full shadow-lg">
-                      {plan.badge}
-                    </span>
-                  </div>
-                )}
-
-                {/* Plan Name */}
-                <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">
-                  {plan.name}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-gray-600 mb-6">
-                  {plan.description}
-                </p>
-
-                {/* Discount Badge */}
-                {plan.discount && (
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                      {plan.discount}
-                    </span>
-                  </div>
-                )}
-
-                {/* Price */}
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-3">
-                    {plan.originalPrice && (
-                      <span className="text-2xl font-bold text-gray-400 line-through">{plan.originalPrice}</span>
-                    )}
-                    <span className="text-4xl lg:text-5xl font-bold text-[#4C8EFF]">{plan.price}</span>
-                  </div>
-                  {plan.priceRange && (
-                    <p className="text-sm text-gray-600 mt-1">{plan.priceRange}</p>
-                  )}
-                  <p className="text-sm text-gray-500 mt-1">{plan.period}</p>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg
-                        className="w-5 h-5 text-[#4C8EFF] flex-shrink-0 mt-0.5"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <ClickSpark sparkColor={plan.highlighted ? "#4C8EFF" : "#8B5CF6"} sparkCount={10} sparkRadius={20}>
-                  <Magnet padding={60} magnetStrength={2}>
-                    <button
-                      onClick={() => {
-                        const element = document.getElementById('contact');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className={`w-full py-3.5 text-base font-semibold rounded-full transition-all shadow-lg hover:shadow-xl ${plan.highlighted
-                        ? 'bg-[#4C8EFF] text-white hover:bg-[#3d7de6] shadow-blue-500/30'
-                        : 'bg-gray-100 text-[#1A1A1A] hover:bg-gray-200 border border-gray-300'
-                        }`}
-                    >
-                      Start Project
-                    </button>
-                  </Magnet>
-                </ClickSpark>
-              </div>
-            ))}
-          </div>
-
-          {/* Second Row - Remaining Plans */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto mt-6">
-            {plans.slice(3).map((plan, index) => (
-              <div
-                key={index + 3}
-                ref={(el) => (cardsRef.current[index + 3] = el)}
-                className="relative bg-white rounded-2xl border-2 border-gray-200 shadow-lg hover:shadow-xl hover:border-gray-300 p-6 lg:p-8 transition-all duration-300"
-              >
-                {/* Discount Badge */}
-                {plan.discount && (
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                      {plan.discount}
-                    </span>
-                  </div>
-                )}
-
-                {/* Plan Name */}
-                <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">
-                  {plan.name}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-gray-600 mb-6">
-                  {plan.description}
-                </p>
-
-                {/* Price */}
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-3">
-                    {plan.originalPrice && (
-                      <span className="text-2xl font-bold text-gray-400 line-through">{plan.originalPrice}</span>
-                    )}
-                    <span className="text-4xl lg:text-5xl font-bold text-[#4C8EFF]">{plan.price}</span>
-                  </div>
-                  {plan.priceRange && (
-                    <p className="text-sm text-gray-600 mt-1">{plan.priceRange}</p>
-                  )}
-                  <p className="text-sm text-gray-500 mt-1">{plan.period}</p>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg
-                        className="w-5 h-5 text-[#4C8EFF] flex-shrink-0 mt-0.5"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <ClickSpark sparkColor="#8B5CF6" sparkCount={10} sparkRadius={20}>
-                  <Magnet padding={60} magnetStrength={2}>
-                    <button
-                      onClick={() => {
-                        const element = document.getElementById('contact');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="w-full py-3.5 text-base font-semibold rounded-full transition-all shadow-lg hover:shadow-xl bg-gray-100 text-[#1A1A1A] hover:bg-gray-200 border border-gray-300"
-                    >
-                      Start Project
-                    </button>
-                  </Magnet>
-                </ClickSpark>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Info */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600">
-              Need a custom solution?{' '}
-              <ClickSpark sparkColor="#4C8EFF" sparkCount={6} sparkRadius={12}>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-[#4C8EFF] font-semibold hover:underline"
-                >
-                  Contact us
-                </button>
-              </ClickSpark>{' '}
-              for a personalized quote.
-            </p>
-          </div>
+          <p className="text-xs sm:text-sm font-semibold text-[#4C8EFF] uppercase tracking-wide mb-2 sm:mb-3">
+            Pricing Plans
+          </p>
+          <h2 className="text-[clamp(1.75rem,4vw+0.5rem,3rem)] font-bold text-[#1A1A1A] mb-3 sm:mb-4 leading-tight px-4">
+            Flexible Pricing to Fit Every Project
+          </h2>
+          <p className="text-[clamp(0.9375rem,2vw+0.25rem,1.125rem)] text-gray-600 max-w-2xl mx-auto px-4 leading-relaxed">
+            Choose the package that best suits your needs. All plans include quality code and modern design.
+          </p>
         </div>
-      </section>
-    </ClickSpark>
+
+        {/* Pricing Cards - First Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch max-w-6xl mx-auto">
+          {plans.slice(0, 3).map((plan, index) => (
+            <article
+              key={index}
+              className={`relative bg-white rounded-2xl border-2 p-6 lg:p-8 transition-all duration-300 ${plan.highlighted
+                ? 'border-[#4C8EFF] shadow-2xl shadow-blue-500/20 md:-mt-4 md:mb-4'
+                : 'border-gray-200 shadow-lg hover:shadow-xl hover:border-gray-300'
+                }`}
+              aria-label={`${plan.name} pricing plan`}
+            >
+              {/* Badge */}
+              {plan.badge && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="px-4 py-1.5 bg-[#4C8EFF] text-white text-xs font-bold rounded-full shadow-lg">
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+
+              {/* Plan Name */}
+              <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">
+                {plan.name}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 mb-6">
+                {plan.description}
+              </p>
+
+              {/* Discount Badge */}
+              {plan.discount && (
+                <div className="mb-3">
+                  <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+                    {plan.discount}
+                  </span>
+                </div>
+              )}
+
+              {/* Price */}
+              <div className="mb-6" aria-label={`Price: ${plan.price} ${plan.period}`}>
+                <div className="flex items-baseline gap-3">
+                  {plan.originalPrice && (
+                    <span
+                      className="text-2xl font-bold text-gray-400 line-through"
+                      aria-label={`Original price: ${plan.originalPrice}`}
+                    >
+                      {plan.originalPrice}
+                    </span>
+                  )}
+                  <span
+                    className="text-4xl lg:text-5xl font-bold text-[#4C8EFF]"
+                    aria-label={`Current price: ${plan.price}`}
+                  >
+                    {plan.price}
+                  </span>
+                </div>
+                {plan.priceRange && (
+                  <p className="text-sm text-gray-600 mt-1">{plan.priceRange}</p>
+                )}
+                <p className="text-sm text-gray-500 mt-1">{plan.period}</p>
+              </div>
+
+              {/* Features */}
+              <ul className="space-y-4 mb-8" aria-label="Plan features">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <svg
+                      className="w-5 h-5 text-[#4C8EFF] flex-shrink-0 mt-0.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <Button
+                onClick={scrollToContact}
+                variant={plan.highlighted ? 'primary' : 'secondary'}
+                size="lg"
+                fullWidth
+                className={plan.highlighted ? 'shadow-blue-500/30' : ''}
+              >
+                Start Project
+              </Button>
+            </article>
+          ))}
+        </div>
+
+        {/* Second Row - Remaining Plans */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto mt-6">
+          {plans.slice(3).map((plan, index) => (
+            <article
+              key={index + 3}
+              className="relative bg-white rounded-2xl border-2 border-gray-200 shadow-lg hover:shadow-xl hover:border-gray-300 p-6 lg:p-8 transition-all duration-300"
+              aria-label={`${plan.name} pricing plan`}
+            >
+              {/* Discount Badge */}
+              {plan.discount && (
+                <div className="mb-3">
+                  <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+                    {plan.discount}
+                  </span>
+                </div>
+              )}
+
+              {/* Plan Name */}
+              <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">
+                {plan.name}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 mb-6">
+                {plan.description}
+              </p>
+
+              {/* Price */}
+              <div className="mb-6" aria-label={`Price: ${plan.price} ${plan.period}`}>
+                <div className="flex items-baseline gap-3">
+                  {plan.originalPrice && (
+                    <span
+                      className="text-2xl font-bold text-gray-400 line-through"
+                      aria-label={`Original price: ${plan.originalPrice}`}
+                    >
+                      {plan.originalPrice}
+                    </span>
+                  )}
+                  <span
+                    className="text-4xl lg:text-5xl font-bold text-[#4C8EFF]"
+                    aria-label={`Current price: ${plan.price}`}
+                  >
+                    {plan.price}
+                  </span>
+                </div>
+                {plan.priceRange && (
+                  <p className="text-sm text-gray-600 mt-1">{plan.priceRange}</p>
+                )}
+                <p className="text-sm text-gray-500 mt-1">{plan.period}</p>
+              </div>
+
+              {/* Features */}
+              <ul className="space-y-4 mb-8" aria-label="Plan features">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <svg
+                      className="w-5 h-5 text-[#4C8EFF] flex-shrink-0 mt-0.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span className="text-gray-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <Button
+                onClick={scrollToContact}
+                variant="secondary"
+                size="lg"
+                fullWidth
+              >
+                Start Project
+              </Button>
+            </article>
+          ))}
+        </div>
+
+        {/* Additional Info */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600">
+            Need a custom solution?{' '}
+            <button
+              onClick={scrollToContact}
+              className="text-[#4C8EFF] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-[#4C8EFF] focus:ring-offset-2 rounded"
+              aria-label="Contact us for a personalized quote"
+            >
+              Contact us
+            </button>{' '}
+            for a personalized quote.
+          </p>
+        </div>
+      </div>
+    </Section>
   );
 };
 

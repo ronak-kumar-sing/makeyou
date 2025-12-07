@@ -132,8 +132,27 @@ const ClickSpark = ({
   };
 
   return (
-    <div className="relative w-full h-full" onClick={handleClick}>
-      <canvas ref={canvasRef} className="w-full h-full block absolute top-0 left-0 select-none pointer-events-none" />
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%'
+      }}
+      onClick={handleClick}
+    >
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          userSelect: 'none',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          pointerEvents: 'none'
+        }}
+      />
       {children}
     </div>
   );

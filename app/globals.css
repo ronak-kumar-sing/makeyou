@@ -127,6 +127,161 @@
 }
 
 @layer utilities {
+
+  /* Responsive spacing utilities */
+  .container-padding {
+    padding-left: clamp(1rem, 5vw, 2rem);
+    padding-right: clamp(1rem, 5vw, 2rem);
+  }
+
+  .section-spacing {
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(3rem, 8vw, 6rem);
+  }
+
+  /* Prevent horizontal overflow */
+  .prevent-overflow {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* GPU-accelerated animations using transform and opacity only */
+
+  /* Fade-in animation */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Slide-up animation */
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide-down animation */
+  .animate-slide-down {
+    animation: slide-down 0.6s ease-out forwards;
+  }
+
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide-left animation */
+  .animate-slide-left {
+    animation: slide-left 0.6s ease-out forwards;
+  }
+
+  @keyframes slide-left {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Slide-right animation */
+  .animate-slide-right {
+    animation: slide-right 0.6s ease-out forwards;
+  }
+
+  @keyframes slide-right {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scale animation */
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out forwards;
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Scale-up animation */
+  .animate-scale-up {
+    animation: scale-up 0.5s ease-out forwards;
+  }
+
+  @keyframes scale-up {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Fade-in-up (combined) */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Shine animation for text effects */
   .animate-shine {
     animation: shine 5s linear infinite;
   }
@@ -141,39 +296,272 @@
     }
   }
 
-  .animate-star-movement-bottom {
-    animation: star-movement-bottom linear infinite alternate;
+  /* Animation delay utilities for staggered animations */
+  .delay-100 {
+    animation-delay: 100ms;
   }
 
-  .animate-star-movement-top {
-    animation: star-movement-top linear infinite alternate;
-  }
-
-  @keyframes star-movement-bottom {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes star-movement-top {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-100%);
-    }
+  .delay-200 {
+    animation-delay: 200ms;
   }
 
   .delay-300 {
     animation-delay: 300ms;
   }
 
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
   .delay-500 {
     animation-delay: 500ms;
+  }
+
+  .delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .delay-900 {
+    animation-delay: 900ms;
+  }
+
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+
+  /* Will-change utility - only apply during active animations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .will-change-transform-opacity {
+    will-change: transform, opacity;
+  }
+
+  /* Remove will-change after animation completes */
+  .will-change-auto {
+    will-change: auto;
+  }
+
+  /* Hover effects using CSS only */
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-scale-sm {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale-sm:hover {
+    transform: scale(1.02);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(76, 142, 255, 0.5);
+  }
+
+  /* Staggered animations - trigger when parent has animation class */
+  .animate-fade-in .animate-slide-up,
+  .animate-slide-up .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  /* Modal animations */
+  .animate-modal-fade-in {
+    animation: modal-fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-modal-fade-out {
+    animation: modal-fade-out 0.3s ease-in forwards;
+  }
+
+  .animate-modal-slide-up {
+    animation: modal-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-modal-slide-down {
+    animation: modal-slide-down 0.3s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+  }
+
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes modal-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes modal-slide-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+
+  /* Navbar specific styles */
+  .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Focus visible styles for better keyboard navigation */
+  .focus-visible\:ring-2:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* Hamburger menu animation */
+  .hamburger-icon svg {
+    transition: transform 0.3s ease;
+  }
+
+  /* Mobile menu slide animation */
+  @keyframes mobile-menu-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Prefers-reduced-motion support */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-slide-down,
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-scale-in,
+    .animate-scale-up,
+    .animate-fade-in-up,
+    .animate-modal-fade-in,
+    .animate-modal-fade-out,
+    .animate-modal-slide-up,
+    .animate-modal-slide-down,
+    .animate-spin-slow {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Disable navbar animations for reduced motion */
+    .nav-link span {
+      transition: none !important;
+    }
+
+    #mobile-menu {
+      transition: none !important;
+    }
+  }
+
+  /* Additional custom animations for enhanced components */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  /* Marquee animation for FlowingMenu */
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+  }
+
+  /* Scrollbar hide utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -98,7 +98,7 @@ const TextType = ({
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+          timeout = setTimeout(() => { }, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -154,16 +154,21 @@ const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
+      className: `inline-block whitespace-pre-wrap tracking-tight font-bold ${className}`,
+      style: {
+        color: getCurrentTextColor() || '#1A1A1A',
+        textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      },
       ...props
     },
-    <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
+    <span className="inline">
       {displayedText}
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
-        className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? 'hidden' : ''} ${cursorClassName}`}
+        className={`ml-1 inline-block opacity-100 font-bold ${shouldHideCursor ? 'hidden' : ''} ${cursorClassName}`}
+        style={{ color: '#4C8EFF' }}
       >
         {cursorCharacter}
       </span>

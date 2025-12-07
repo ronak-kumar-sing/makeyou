@@ -1,6 +1,5 @@
 'use client';
 
-import ClickSpark from './ClickSpark';
 import Logo from './Logo';
 
 const Footer = () => {
@@ -70,14 +69,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.id}>
-                  <ClickSpark sparkColor="#4C8EFF" sparkCount={6} sparkRadius={12}>
-                    <button
-                      onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-[#4C8EFF] transition-colors"
-                    >
-                      {link.name}
-                    </button>
-                  </ClickSpark>
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="text-gray-400 hover:text-[#4C8EFF] transition-colors"
+                  >
+                    {link.name}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -88,18 +85,14 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-3 text-gray-400">
               <li>
-                <ClickSpark sparkColor="#4C8EFF" sparkCount={6} sparkRadius={12}>
-                  <a href="mailto:hello@makeyou.online" className="hover:text-[#4C8EFF] transition-colors">
-                    hello@makeyou.online
-                  </a>
-                </ClickSpark>
+                <a href="mailto:hello@makeyou.online" className="hover:text-[#4C8EFF] transition-colors">
+                  hello@makeyou.online
+                </a>
               </li>
               <li>
-                <ClickSpark sparkColor="#4C8EFF" sparkCount={6} sparkRadius={12}>
-                  <a href="tel:+1234567890" className="hover:text-[#4C8EFF] transition-colors">
-                    +1 (234) 567-890
-                  </a>
-                </ClickSpark>
+                <a href="tel:+1234567890" className="hover:text-[#4C8EFF] transition-colors">
+                  +1 (234) 567-890
+                </a>
               </li>
               <li className="pt-2">
                 San Francisco, CA
@@ -117,21 +110,15 @@ const Footer = () => {
               © {currentYear} makeyou.online. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <ClickSpark sparkColor="#4C8EFF" sparkCount={4} sparkRadius={10}>
-                <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
-                  Privacy Policy
-                </a>
-              </ClickSpark>
-              <ClickSpark sparkColor="#4C8EFF" sparkCount={4} sparkRadius={10}>
-                <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
-                  Terms of Service
-                </a>
-              </ClickSpark>
-              <ClickSpark sparkColor="#4C8EFF" sparkCount={4} sparkRadius={10}>
-                <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
-                  Cookie Policy
-                </a>
-              </ClickSpark>
+              <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-400 hover:text-[#4C8EFF] transition-colors">
+                Cookie Policy
+              </a>
             </div>
           </div>
         </div>
