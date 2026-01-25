@@ -41,7 +41,7 @@ async function testGoogleSheets() {
     console.log('\n✍️  Testing write operation...');
     const testData = [
       [
-        new Date().toISOString(),
+        new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
         'Test Name',
         'test@example.com',
         '9876543210',
@@ -51,7 +51,7 @@ async function testGoogleSheets() {
 
     const result = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Sheet1!A:E',
+      range: 'Sheet1!A1',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: testData,
