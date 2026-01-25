@@ -9,30 +9,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const tiers = [
     {
-        name: 'Starter',
-        id: 'starter',
-        price: 'From $2,500',
-        description: 'Perfect for startups and personal brands needing a strong foundation.',
-        features: ['Custom Design System', '5 Core Pages', 'Mobile Responsive', 'SEO Basic Setup', '1 Week Support'],
-        cta: 'Get Started',
+        name: 'Basic Presence',
+        id: 'basic',
+        price: '₹19,999 – ₹29,999',
+        description: 'Simple online presence for local shops.',
+        features: ['1–3 page website', 'Mobile responsive design', 'Google Maps integration', 'WhatsApp click-to-chat', 'Basic local SEO', '7 days post-launch support'],
+        cta: 'Get Online Today',
         popular: false,
     },
     {
-        name: 'Professional',
-        id: 'pro',
-        price: 'From $5,000',
-        description: 'A complete digital presence for growing businesses.',
-        features: ['Advanced Animations (GSAP)', 'CMS Integration', '10+ Pages', 'Interactive 3D Elements', 'Speed Optimization', '1 Month Support'],
-        cta: 'Go Professional',
+        name: 'Growth',
+        id: 'growth',
+        price: '₹39,999 – ₹59,999',
+        description: 'Lead-focused website for growing local businesses.',
+        features: ['Up to 5 pages', 'Clean custom UI', 'Contact & enquiry forms', 'Google Business Profile setup', 'Local SEO optimization', 'Basic speed optimization', '15 days support'],
+        cta: 'Grow My Business',
         popular: true,
     },
     {
-        name: 'Enterprise',
-        id: 'enterprise',
-        price: 'Custom',
-        description: 'Full-scale platforms and complex web applications.',
-        features: ['Full Stack Development', 'Custom Backend / API', 'User Authentication', 'Advanced Analytics', 'Priority 24/7 Support'],
-        cta: 'Contact Sales',
+        name: 'Advanced Local',
+        id: 'advanced',
+        price: '₹69,999 – ₹89,999',
+        description: 'Advanced website for clinics, institutes, and franchises.',
+        features: ['8–10 pages', 'Appointment booking / enquiry system', 'Testimonials and gallery', 'CMS for easy updates', 'Advanced local SEO', 'Performance optimization', '1 month support'],
+        cta: 'Get More Customers',
         popular: false,
     },
 ];
@@ -61,9 +61,9 @@ export default function Pricing() {
         <section id="pricing" ref={containerRef} className="section-spacing bg-transparent relative">
             <div className="container-padding max-w-7xl mx-auto pointer-events-none">
                 <div className="text-center max-w-2xl mx-auto mb-20 pointer-events-none">
-                    <h2 className="text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-3">Investment</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Transparent Pricing</h3>
-                    <p className="text-lg text-muted-foreground">No hidden fees. Just clear deliverables and exceptional results.</p>
+                    <h2 className="text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-3">Affordable Plans for Local Businesses</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Get More Calls & Customers</h3>
+                    <p className="text-lg text-muted-foreground">Perfect for kirana stores, salons, clinics, gyms, cafes, and coaching centers.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -103,7 +103,8 @@ export default function Pricing() {
                     ))}
                 </div>
 
-                <div className="mt-16 text-center">
+                <div className="mt-16 text-center space-y-3">
+                    <p className="text-sm text-muted-foreground italic">* Pricing may vary based on business needs. All prices are negotiable.</p>
                     <p className="text-muted-foreground">Not sure which plan is right for you? <a href="#contact" className="text-primary font-semibold hover:underline">Let's schedule a call</a> to discuss your needs.</p>
                 </div>
 
