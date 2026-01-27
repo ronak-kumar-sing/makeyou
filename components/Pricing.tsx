@@ -11,7 +11,8 @@ const tiers = [
     {
         name: 'Basic Presence',
         id: 'basic',
-        price: '₹19,999 – ₹29,999',
+        price: '₹9,999 – ₹14,999',
+        originalPrice: '₹19,999 – ₹29,999',
         description: 'Simple online presence for local shops.',
         features: ['1–3 page website', 'Mobile responsive design', 'Google Maps integration', 'WhatsApp click-to-chat', 'Basic local SEO', '7 days post-launch support'],
         cta: 'Get Online Today',
@@ -20,7 +21,8 @@ const tiers = [
     {
         name: 'Growth',
         id: 'growth',
-        price: '₹39,999 – ₹59,999',
+        price: '₹19,999 – ₹29,999',
+        originalPrice: '₹39,999 – ₹59,999',
         description: 'Lead-focused website for growing local businesses.',
         features: ['Up to 5 pages', 'Clean custom UI', 'Contact & enquiry forms', 'Google Business Profile setup', 'Local SEO optimization', 'Basic speed optimization', '15 days support'],
         cta: 'Grow My Business',
@@ -29,7 +31,8 @@ const tiers = [
     {
         name: 'Advanced Local',
         id: 'advanced',
-        price: '₹69,999 – ₹89,999',
+        price: '₹34,999 – ₹44,999',
+        originalPrice: '₹69,999 – ₹89,999',
         description: 'Advanced website for clinics, institutes, and franchises.',
         features: ['8–10 pages', 'Appointment booking / enquiry system', 'Testimonials and gallery', 'CMS for easy updates', 'Advanced local SEO', 'Performance optimization', '1 month support'],
         cta: 'Get More Customers',
@@ -80,7 +83,10 @@ export default function Pricing() {
 
                             <div className="mb-8">
                                 <h4 className="text-xl font-bold mb-2">{tier.name}</h4>
-                                <div className="text-3xl font-bold mb-2">{tier.price}</div>
+                                <div className="mb-2">
+                                    <span className="text-sm text-muted-foreground line-through mr-2">{tier.originalPrice}</span>
+                                    <div className="text-3xl font-bold">{tier.price}</div>
+                                </div>
                                 <p className="text-sm text-muted-foreground">{tier.description}</p>
                             </div>
 

@@ -30,10 +30,10 @@ const processSteps = [
 ];
 
 const stats = [
-    { label: 'Projects Completed', value: '120+' },
-    { label: 'Client Satisfaction', value: '100%' },
-    { label: 'Years Experience', value: '8+' },
-    { label: 'Revenue Generated', value: '$2M+' },
+    { label: 'Projects Completed', value: '20+' },
+    { label: 'Client Satisfaction', value: '99%' },
+    { label: 'Years Experience', value: '2+ year' },
+    { label: 'Revenue Generated', value: '1L+' },
 ];
 
 export default function TrustSection() {

@@ -52,12 +52,12 @@ export default function HeaderTop() {
   if (!isVisible) return null;
 
   return (
-    <div ref={containerRef} className="fixed top-0 left-0 w-full z-40 bg-gradient-to-r from-foreground/95 to-primary/95 backdrop-blur-md border-b border-white/10">
+    <div ref={containerRef} className="fixed top-0 left-0 w-full z-[60] bg-gradient-to-r from-foreground/95 to-primary/95 backdrop-blur-md border-b border-white/10">
       <div className="container-padding max-w-7xl mx-auto">
         <div className="header-top-content py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm text-primary-foreground relative">
           <div className="flex items-center gap-1 sm:gap-2">
             <span className="font-medium text-background">
-              We build
+              MakeYou.
             </span>
             <RotatingText
               texts={[

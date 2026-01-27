@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Text } from 'lucide-react';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -64,17 +64,7 @@ export default function Navbar() {
                 <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight z-50 relative group pointer-events-auto" onClick={(e) => handleScrollTo('body', e)}>
                     <Logo size={36} variant="icon" />
                     <div className="hidden sm:flex items-center gap-0">
-                        <RotatingText
-                            texts={['MAKEYOU', 'MAKE', 'BUILD', 'CREATE', 'DESIGN']}
-                            mainClassName="font-bold"
-                            rotationInterval={3000}
-                            transition={{ type: 'spring', damping: 30, stiffness: 400 }}
-                            initial={{ y: 10, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -10, opacity: 0 }}
-                            splitBy="characters"
-                            staggerDuration={0.02}
-                        />
+                        <Text className="text-2xl font-bold">MakeYou</Text>
                         <span className="text-primary">.</span>
                     </div>
                     <RotatingText

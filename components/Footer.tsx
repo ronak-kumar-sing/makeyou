@@ -29,9 +29,9 @@ export default function Footer() {
                             <div>
                                 <h4 className="font-semibold mb-4">Socials</h4>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    <li><a href="#" className="hover:text-foreground transition-colors">Twitter / X</a></li>
-                                    <li><a href="#" className="hover:text-foreground transition-colors">LinkedIn</a></li>
-                                    <li><a href="#" className="hover:text-foreground transition-colors">Instagram</a></li>
+                                    <li><a href="https://x.com/RonakKumar25401" className="hover:text-foreground transition-colors">Twitter / X</a></li>
+                                    <li><a href="https://www.linkedin.com/in/ronak-km/" className="hover:text-foreground transition-colors">LinkedIn</a></li>
+                                    <li><a href="https://www.instagram.com/_ronak.kumar3/" className="hover:text-foreground transition-colors">Instagram</a></li>
                                 </ul>
                             </div>
                             <div>

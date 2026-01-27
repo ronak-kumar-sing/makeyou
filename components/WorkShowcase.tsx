@@ -15,6 +15,7 @@ const projects = [
         category: "Real Estate Tech",
         description: "A comprehensive platform for students to book PGs and rooms. Built with Next.js, TailwindCSS, Shadcn UI, and integrated Google Maps.",
         impact: "Simplified housing search for thousands of students.",
+        link: "https://student-nest.live",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png", // Fallback if needed, though we use desktop mostly
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png",
         video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1765032509/i6pgetbth9c3zitzgv5s.mov",
@@ -27,6 +28,7 @@ const projects = [
         category: "Live Sports Analytics",
         description: "Real-time cricket and football scores powered by Node.js and Socket.io. Features live updates and detailed match statistics.",
         impact: "Delivers updates with sub-second latency.",
+        link: "https://cricket-hub-y63h.vercel.app/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
         video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769179954/rbjf9hifdqq0xuynsxmd.mov",
@@ -39,6 +41,7 @@ const projects = [
         category: "Brand Presence",
         description: "A high-impact website designed to stand out in the competitive cafe market. Built with Next.js for speed and SEO.",
         impact: "Elevated brand perception and digital footfall.",
+        link: "https://cafe-coffee-roan.vercel.app/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179375/csbbjh1ja0mmcpsqipdb.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179375/csbbjh1ja0mmcpsqipdb.png",
         video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769179771/i5jfccfyiheamebzeowh.mov",
@@ -51,6 +54,7 @@ const projects = [
         category: "Education Tech",
         description: "A modern educational platform for coaching centers, streamlining course info and student engagement.",
         impact: "Modernized the traditional coaching center experience.",
+        link: "https://coaching-center-theta.vercel.app/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
         video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180067/qhpr4su6bzr12sb1bwcy.mov",
@@ -63,6 +67,7 @@ const projects = [
         category: "Agency Portfolio",
         description: "A stunning mobile-first portfolio website designed to convert visitors into high-value clients.",
         impact: "Optimized for mobile conversion and visual storytelling.",
+        link: "#",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
         video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180255/djqh0bnuaqigqskvm2vq.mov",
@@ -111,7 +116,7 @@ export default function WorkShowcase() {
                             {/* Visuals */}
                             <div className="flex-1 w-full relative group perspective-1000">
                                 {/* We show alternating device types for visual interest */}
-                                <div className="relative z-10 transform transition-transform duration-500 hover:scale-[1.01]">
+                                <div className="relative z-10 transform transition-transform duration-500 hover:scale-[1.01] cursor-pointer" onClick={() => window.open(project.link, '_blank')}>
                                     {project.type === 'desktop' ? (
                                         <DeviceFrame
                                             type="desktop"
@@ -150,7 +155,7 @@ export default function WorkShowcase() {
                                 </div>
 
                                 <div className="pt-4">
-                                    <a href="#" className="inline-flex items-center text-sm font-semibold tracking-wide uppercase group/link">
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold tracking-wide uppercase group/link">
                                         View Case Study
                                         <ArrowUpRight className="ml-2 w-4 h-4 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
                                     </a>
