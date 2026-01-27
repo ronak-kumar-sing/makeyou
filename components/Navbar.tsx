@@ -50,7 +50,6 @@ export default function Navbar() {
                 {/* Brand */}
                 <a href="#" className="flex items-center gap-1 text-xl font-bold tracking-tight z-50 relative group pointer-events-auto" onClick={(e) => handleScrollTo('body', e)}>
                     <span>MAKEYOU<span className="text-primary">.</span></span>
-                    {/* @ts-ignore */}
                     <RotatingText
                         texts={['online', 'grow', 'pro', 'lead', 'studio', 'digital', 'agency']}
                         mainClassName="text-primary overflow-hidden uppercase"
