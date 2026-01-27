@@ -12,6 +12,23 @@ const formSchema = z.object({
   message: z.string().min(10),
 });
 
+// Create reusable transporter - optimized for serverless (Vercel)
+const createTransporter = () => {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+    // Timeouts for serverless environment
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
+  } as nodemailer.TransportOptions);
+};
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -56,17 +73,14 @@ export async function POST(req: NextRequest) {
       // Don't fail the request if sheets fails, but log it
     }
 
-    // 2. Send Confirmation Email (Nodemailer)
+    // 2. Send Confirmation Email (Nodemailer) - Optimized for Vercel
     try {
       if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-        const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST,
-          port: Number(process.env.SMTP_PORT) || 587,
-          secure: Boolean(process.env.SMTP_SECURE) || false, // true for 465, false for other ports
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
+        const transporter = createTransporter();
+        
+        // Verify connection before sending (catches issues early)
+        await transporter.verify().catch((err) => {
+          console.warn('SMTP verification warning:', err.message);
         });
 
         // Email to User
@@ -174,21 +188,24 @@ export async function POST(req: NextRequest) {
               </div>
             </div>
           `,
-        })
+        });
 
-        console.log("Emails sent");
+        console.log("Emails sent successfully");
+        
+        // Close the transporter connection (important for serverless)
+        transporter.close();
       } else {
         console.warn("SMTP credentials missing, skipping email.");
       }
-    } catch (emailError) {
-      console.error("Email Error:", emailError);
+    } catch (emailError: any) {
+      console.error("Email Error:", emailError?.message || emailError);
       // Don't fail the request if email fails, but log it
     }
 
     return NextResponse.json({ success: true });
 
-  } catch (error) {
-    console.error("Handler Error:", error);
+  } catch (error: any) {
+    console.error("Handler Error:", error?.message || error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

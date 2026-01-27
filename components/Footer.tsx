@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Github, Twitter, Linkedin, Mail } from 'lucide-react';
 import ContactForm from './ContactForm';
+import Logo from './Logo';
 
 export default function Footer() {
     return (
@@ -10,6 +11,10 @@ export default function Footer() {
 
                 <div className="flex flex-col lg:flex-row gap-16 mb-24 items-start">
                     <div className="space-y-6 lg:w-1/2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <Logo size={48} variant="icon" />
+                            <span className="text-2xl font-bold">MAKEYOU<span className="text-primary">.</span></span>
+                        </div>
                         <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-none">
                             Let's build something <span className="text-muted-foreground">visionary.</span>
                         </h2>

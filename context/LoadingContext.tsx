@@ -3,8 +3,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 type LoadingContextType = {
-    isSplineLoaded: boolean;
-    setIsSplineLoaded: (loaded: boolean) => void;
     isPreloaderComplete: boolean;
     setIsPreloaderComplete: (complete: boolean) => void;
 };
@@ -12,11 +10,10 @@ type LoadingContextType = {
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
 export function LoadingProvider({ children }: { children: ReactNode }) {
-    const [isSplineLoaded, setIsSplineLoaded] = useState(false);
     const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
 
     return (
-        <LoadingContext.Provider value={{ isSplineLoaded, setIsSplineLoaded, isPreloaderComplete, setIsPreloaderComplete }}>
+        <LoadingContext.Provider value={{ isPreloaderComplete, setIsPreloaderComplete }}>
             {children}
         </LoadingContext.Provider>
     );

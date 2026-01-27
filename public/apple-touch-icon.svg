@@ -1,0 +1,8 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="180" rx="40" fill="#0a0a0a"/>
+  <!-- M shape -->
+  <path d="M40 120 L40 60 L65 88 L90 60 L115 88 L140 60 L140 120" stroke="#fafafa" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Blue dot accent -->
+  <circle cx="140" cy="120" r="8" fill="#3B82F6"/>
+</svg>

@@ -5,55 +5,52 @@ import gsap from 'gsap';
 
 
 export default function Preloader() {
-    const { isSplineLoaded, setIsPreloaderComplete } = useLoading();
+    const { setIsPreloaderComplete } = useLoading();
     const containerRef = useRef<HTMLDivElement>(null);
     const counterRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const barRef = useRef<HTMLDivElement>(null);
 
-    // Simulate initial progress to avoid "stuck at 0" feel if 3D loads instantly
-    const [simulatedProgress, setSimulatedProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // Simulation timer
+        // Quick loading simulation - completes in ~1.5 seconds
         const timer = setInterval(() => {
-            setSimulatedProgress(prev => {
-                if (prev >= 90) {
+            setProgress(prev => {
+                if (prev >= 100) {
                     clearInterval(timer);
-                    return 90;
+                    return 100;
                 }
-                // Random increments for organic feel
-                return prev + Math.floor(Math.random() * 10) + 1;
+                // Faster increments for snappy loading
+                return Math.min(prev + Math.floor(Math.random() * 20) + 10, 100);
             });
-        }, 200);
+        }, 150);
 
         return () => clearInterval(timer);
     }, []);
 
     useEffect(() => {
-        if (isSplineLoaded && containerRef.current) {
-            // Force progress to 100 when loaded
+        if (progress >= 100 && containerRef.current) {
+            // Complete the loading animation
             gsap.to(barRef.current, {
                 width: '100%',
-                duration: 0.5,
+                duration: 0.3,
                 ease: 'power2.out',
                 onComplete: () => {
                     playExitAnimation();
                 }
             });
 
-            // Update text to 100
             if (counterRef.current) counterRef.current.innerText = '100';
         } else if (barRef.current) {
-            // Animate to simulated progress
             gsap.to(barRef.current, {
-                width: `${simulatedProgress}%`,
-                duration: 0.5,
+                width: `${progress}%`,
+                duration: 0.3,
                 ease: 'power2.out'
             });
-            if (counterRef.current) counterRef.current.innerText = simulatedProgress.toString();
+            if (counterRef.current) counterRef.current.innerText = progress.toString();
         }
-    }, [isSplineLoaded, simulatedProgress]);
+    }, [progress]);
 
     const playExitAnimation = () => {
         const tl = gsap.timeline();

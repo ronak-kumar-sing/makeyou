@@ -55,7 +55,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={containerRef} className="relative z-0 min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-20">
+    <section ref={containerRef} className="relative z-0 min-h-screen flex items-center justify-center overflow-hidden pt-40 md:pt-32">
 
 
       <div className="container-padding w-full max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-12">

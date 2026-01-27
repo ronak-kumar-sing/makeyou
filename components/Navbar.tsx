@@ -5,7 +5,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import RotatingText from './RotatingText';
+import RotatingText from './RotatingText.jsx';
+import Logo from './Logo';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -18,14 +19,26 @@ const navItems = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [headerTopClosed, setHeaderTopClosed] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            const scrollY = window.scrollY;
+            setIsScrolled(scrollY > 50);
+            
+            // Check if header top should be considered closed based on scroll
+            if (scrollY > 80) {
+                setHeaderTopClosed(true);
+            }
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const getTopPosition = () => {
+        if (isScrolled || headerTopClosed) return 'top-0';
+        return 'top-10';
+    };
 
     const handleScrollTo = (id: string, e: React.MouseEvent) => {
         e.preventDefault();
@@ -41,18 +54,32 @@ export default function Navbar() {
     return (
         <header
             className={clsx(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b border-transparent",
-                isScrolled ? "bg-background/80 backdrop-blur-md py-4 border-border/40" : "bg-transparent py-6"
+                "fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b border-transparent",
+                isScrolled ? `${getTopPosition()} bg-background/80 backdrop-blur-md py-4 border-border/40` : `${getTopPosition()} bg-transparent py-6`
             )}
         >
             <div className="container-padding max-w-7xl mx-auto flex items-center justify-between pointer-events-none">
 
                 {/* Brand */}
-                <a href="#" className="flex items-center gap-1 text-xl font-bold tracking-tight z-50 relative group pointer-events-auto" onClick={(e) => handleScrollTo('body', e)}>
-                    <span>MAKEYOU<span className="text-primary">.</span></span>
+                <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight z-50 relative group pointer-events-auto" onClick={(e) => handleScrollTo('body', e)}>
+                    <Logo size={36} variant="icon" />
+                    <div className="hidden sm:flex items-center gap-0">
+                        <RotatingText
+                            texts={['MAKEYOU', 'MAKE', 'BUILD', 'CREATE', 'DESIGN']}
+                            mainClassName="font-bold"
+                            rotationInterval={3000}
+                            transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -10, opacity: 0 }}
+                            splitBy="characters"
+                            staggerDuration={0.02}
+                        />
+                        <span className="text-primary">.</span>
+                    </div>
                     <RotatingText
                         texts={['online', 'grow', 'pro', 'lead', 'studio', 'digital', 'agency']}
-                        mainClassName="text-primary overflow-hidden uppercase"
+                        mainClassName="text-primary overflow-hidden uppercase hidden sm:inline"
                         staggerDuration={0.02}
                         rotationInterval={2500}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}

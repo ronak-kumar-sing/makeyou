@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow API routes and admin
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://makeyou.online/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
