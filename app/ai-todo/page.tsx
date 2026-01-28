@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Send, Sparkles, Globe, CheckCircle2, Circle, Trash2, FileText, MessageSquare } from 'lucide-react'
+import { Send, Sparkles, Globe, CheckCircle2, Circle, Trash2, FileText } from 'lucide-react'
 import LaserFlow from '@/components/LaserFlow'
 
 interface Message {
@@ -28,10 +28,7 @@ const translations = {
     thinking: 'Thinking...',
     todoTitle: 'Your Tasks',
     addNote: 'Add notes...',
-    sendToAdmin: 'Send to Admin',
     noTasks: 'No tasks yet. Start chatting to get suggestions!',
-    adminSuccess: 'Successfully sent to admin!',
-    adminError: 'Failed to send. Please try again.',
   },
   hi: {
     title: 'एआई प्रोजेक्ट सहायक',
@@ -42,10 +39,7 @@ const translations = {
     thinking: 'सोच रहे हैं...',
     todoTitle: 'आपके कार्य',
     addNote: 'नोट जोड़ें...',
-    sendToAdmin: 'एडमिन को भेजें',
     noTasks: 'अभी तक कोई कार्य नहीं। सुझाव पाने के लिए चैट शुरू करें!',
-    adminSuccess: 'एडमिन को सफलतापूर्वक भेजा गया!',
-    adminError: 'भेजने में विफल। कृपया पुनः प्रयास करें।',
   }
 }
 
@@ -164,29 +158,7 @@ export default function AITodo() {
     setTasks(prev => prev.filter(task => task.id !== id))
   }
 
-  const sendToAdmin = async () => {
-    try {
-      const response = await fetch('/api/admin/submit-project', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          tasks,
-          messages,
-          language,
-          submittedAt: new Date().toISOString()
-        })
-      })
 
-      if (response.ok) {
-        alert(t.adminSuccess)
-      } else {
-        alert(t.adminError)
-      }
-    } catch (error) {
-      console.error('Error sending to admin:', error)
-      alert(t.adminError)
-    }
-  }
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-purple-900 via-black to-pink-900">
@@ -214,15 +186,6 @@ export default function AITodo() {
               <Globe size={20} />
               <span>{language === 'en' ? 'हिंदी' : 'English'}</span>
             </button>
-            {tasks.length > 0 && (
-              <button
-                onClick={sendToAdmin}
-                className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all text-white font-semibold shadow-lg"
-              >
-                <MessageSquare size={20} />
-                {t.sendToAdmin}
-              </button>
-            )}
           </div>
         </div>
 
