@@ -1,80 +1,14 @@
 'use client';
 
 import { useRef, useLayoutEffect } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import DeviceFrame from './DeviceFrame';
+import { projects } from '../data/projectsData';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-    {
-        id: 1,
-        title: "Student Nest",
-        category: "Real Estate Tech",
-        description: "A comprehensive platform for students to book PGs and rooms. Built with Next.js, TailwindCSS, Shadcn UI, and integrated Google Maps.",
-        impact: "Simplified housing search for thousands of students.",
-        link: "https://student-nest.live",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png", // Fallback if needed, though we use desktop mostly
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1765032509/i6pgetbth9c3zitzgv5s.mov",
-        theme: "light",
-        type: "desktop"
-    },
-    {
-        id: 2,
-        title: "Cricket Hub",
-        category: "Live Sports Analytics",
-        description: "Real-time cricket and football scores powered by Node.js and Socket.io. Features live updates and detailed match statistics.",
-        impact: "Delivers updates with sub-second latency.",
-        link: "https://cricket-hub-y63h.vercel.app/",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769179954/rbjf9hifdqq0xuynsxmd.mov",
-        theme: "dark",
-        type: "desktop"
-    },
-    {
-        id: 3,
-        title: "Cafe Coffee Roan",
-        category: "Brand Presence",
-        description: "A high-impact website designed to stand out in the competitive cafe market. Built with Next.js for speed and SEO.",
-        impact: "Elevated brand perception and digital footfall.",
-        link: "https://cafe-coffee-roan.vercel.app/",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179375/csbbjh1ja0mmcpsqipdb.png",
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179375/csbbjh1ja0mmcpsqipdb.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769179771/i5jfccfyiheamebzeowh.mov",
-        theme: "light",
-        type: "desktop"
-    },
-    {
-        id: 4,
-        title: "Coaching Center",
-        category: "Education Tech",
-        description: "A modern educational platform for coaching centers, streamlining course info and student engagement.",
-        impact: "Modernized the traditional coaching center experience.",
-        link: "https://coaching-center-theta.vercel.app/",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180067/qhpr4su6bzr12sb1bwcy.mov",
-        theme: "light",
-        type: "desktop"
-    },
-    {
-        id: 5,
-        title: "MakeYou Online",
-        category: "Agency Portfolio",
-        description: "A stunning mobile-first portfolio website designed to convert visitors into high-value clients.",
-        impact: "Optimized for mobile conversion and visual storytelling.",
-        link: "#",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180255/djqh0bnuaqigqskvm2vq.mov",
-        theme: "dark",
-        type: "mobile"
-    }
-];
 
 export default function WorkShowcase() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -163,6 +97,24 @@ export default function WorkShowcase() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* See More Projects Button */}
+                <div className="mt-24 flex justify-center pointer-events-auto">
+                    <Link
+                        href="/gallery"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 hover:from-primary/20 hover:via-primary/10 hover:to-primary/20 border border-primary/20 rounded-full font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 overflow-hidden"
+                    >
+                        {/* Animated Background */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/10 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        {/* Content */}
+                        <span className="relative z-10">See More Projects</span>
+                        <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+
+                        {/* Glow Effect */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
+                    </Link>
                 </div>
             </div>
         </section>
