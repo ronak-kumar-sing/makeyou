@@ -21,6 +21,13 @@ const testimonials = [
         role: "Director, LocalBiz Solutions",
         rating: 5,
     },
+    {
+        quote: "The team created a stunning website for our NGO that perfectly communicates our mission. The attention to detail and clean design has helped us reach more people than ever before.",
+        name: "Prajjwal Shukla",
+        role: "Founder, ARPU Future Rise Life Foundation",
+        website: "https://arpufrl.org/",
+        rating: 5,
+    },
 ];
 
 export default function Testimonials() {
@@ -74,6 +81,16 @@ export default function Testimonials() {
                                 <div>
                                     <p className="font-semibold text-foreground">{testimonial.name}</p>
                                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                                    {testimonial.website && (
+                                        <a
+                                            href={testimonial.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs text-primary hover:underline mt-0.5 block"
+                                        >
+                                            Visit Website
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

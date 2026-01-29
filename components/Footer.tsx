@@ -24,7 +24,7 @@ export default function Footer() {
                         <ContactForm />
                     </div>
 
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col justify-between pointer-events-auto">
                         <div className="grid grid-cols-2 gap-8 mb-8">
                             <div>
                                 <h4 className="font-semibold mb-4">Socials</h4>
