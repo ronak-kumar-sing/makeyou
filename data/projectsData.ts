@@ -19,10 +19,10 @@ export const projects: Project[] = [
         category: "Real Estate Tech",
         description: "A comprehensive platform for students to book PGs and rooms. Built with Next.js, TailwindCSS, Shadcn UI, and integrated Google Maps.",
         impact: "Simplified housing search for thousands of students.",
-        link: "https://student-nest.live",
+        link: "https://www.student-nest.live/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032892/gprlsd0qvqbnvn7fzgfy.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1765032509/i6pgetbth9c3zitzgv5s.mov",
+        video: "https://player.cloudinary.com/embed/?cloud_name=dyvv2furt&public_id=i6pgetbth9c3zitzgv5s",
         theme: "light",
         type: "desktop"
     },
@@ -35,7 +35,7 @@ export const projects: Project[] = [
         link: "https://cricket-hub-y63h.vercel.app/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180305/tr5notfn5j8boietkbzq.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769179954/rbjf9hifdqq0xuynsxmd.mov",
+        video: "https://player.cloudinary.com/embed/?cloud_name=dyvv2furt&public_id=rbjf9hifdqq0xuynsxmd",
         theme: "dark",
         type: "desktop"
     },
@@ -61,7 +61,7 @@ export const projects: Project[] = [
         link: "https://coaching-center-theta.vercel.app/",
         imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
         imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769179378/k6nlivfqmlgeti7l3bpx.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180067/qhpr4su6bzr12sb1bwcy.mov",
+        video: "https://player.cloudinary.com/embed/?cloud_name=dyvv2furt&public_id=qhpr4su6bzr12sb1bwcy",
         theme: "light",
         type: "desktop"
     },
@@ -71,12 +71,25 @@ export const projects: Project[] = [
         category: "Agency Portfolio",
         description: "A stunning mobile-first portfolio website designed to convert visitors into high-value clients.",
         impact: "Optimized for mobile conversion and visual storytelling.",
-        link: "#",
-        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
-        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769180262/rb2autumdafpvw2wa6rl.png",
-        video: "https://res.cloudinary.com/dyvv2furt/video/upload/v1769180255/djqh0bnuaqigqskvm2vq.mov",
+        link: "https://www.makeyou.online/",
+        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769865807/qjzyv5zcqfqjzjtwwtbn.png",
+        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1769865807/qjzyv5zcqfqjzjtwwtbn.png",
+        video: "https://player.cloudinary.com/embed/?cloud_name=dyvv2furt&public_id=mfc3z9gt7sbbq0gcpfa7",
         theme: "dark",
         type: "mobile"
+    },
+    {
+        id: 6,
+        title: "ARPUFRL",
+        category: "Organization Website",
+        description: "A professional website for ARPUFRL organization, showcasing their mission, services, and impact in the community.",
+        impact: "Enhanced digital presence and community outreach.",
+        link: "https://arpufrl.org/",
+        imageMobile: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032906/bs1rm0cmvxetgs89oaki.png",
+        imageDesktop: "https://res.cloudinary.com/dyvv2furt/image/upload/v1765032906/bs1rm0cmvxetgs89oaki.png",
+        video: "https://player.cloudinary.com/embed/?cloud_name=dyvv2furt&public_id=tbrny4vonlmk5fc6v9it",
+        theme: "light",
+        type: "desktop"
     }
 ];
 
@@ -86,5 +99,6 @@ export const categories = [
     "Live Sports Analytics",
     "Brand Presence",
     "Education Tech",
-    "Agency Portfolio"
+    "Agency Portfolio",
+    "Organization Website"
 ];
